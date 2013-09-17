@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 include ApplicationHelper
 
 def valid_signin(user)
@@ -11,3 +12,6 @@ RSpec::Matchers.define :have_error_message do |message|
     page.should have_selector('div.alert.alert-error', text: message)
   end
 end
+=======
+include ApplicationHelper
+>>>>>>> e6b4e001c629e132f10eb42db5a2be7548af5254
