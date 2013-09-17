@@ -60,6 +60,11 @@ SampleApp::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # アプリケーションへのすべてのアクセスをSSL経由にし、
+  # Strict-Transport-Securityを使用し、
+  # secure cookiesを使用する。
+  config.force_ssl = true
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
