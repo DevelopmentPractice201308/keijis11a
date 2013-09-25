@@ -11,21 +11,26 @@ describe User do
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-<<<<<<< HEAD
   it { should respond_to(:password) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:remember_token) }
-=======
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
+  it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
->>>>>>> e6b4e001c629e132f10eb42db5a2be7548af5254
 
   it { should be_valid }
+  it { should_not be_admin }
+  
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
 
+    it { should be_admin }
+  end
+  
   describe "when name is not present" do
     before { @user.name = " " }
     it { should_not be_valid }
@@ -97,7 +102,6 @@ describe User do
       specify { user_for_invalid_password.should be_false }
     end
   end
-<<<<<<< HEAD
   describe "email address with mixed case" do
     let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
 
@@ -112,6 +116,4 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
-=======
->>>>>>> e6b4e001c629e132f10eb42db5a2be7548af5254
 end
